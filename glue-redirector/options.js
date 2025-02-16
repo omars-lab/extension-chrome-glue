@@ -1,5 +1,5 @@
 function getRedirects() {
-  json = localStorage.getItem('redirects') || '[]'; 
+  json = localStorage.getItem('redirects') || '[]';
   return JSON.parse(json);
 }
 
@@ -21,8 +21,8 @@ function add() {
   }
   try {
     new RegExp($from.val());
-  } catch(err) {
-    alert('Error: '+err, 'error');
+  } catch (err) {
+    alert('Error: ' + err, 'error');
     return;
   }
   redirects = getRedirects();
@@ -66,10 +66,10 @@ function alert(msg, type) {
   var timeout;
   type = type || 'success'
   $alert.find('span.msg').html(msg);
-  $alert.attr('class', 'alert fade in alert-'+type);
+  $alert.attr('class', 'alert fade in alert-' + type);
   $alert.show();
   clearTimeout(timeout);
-  timeout = setTimeout(function() {
+  timeout = setTimeout(function () {
     $alert.slideUp();
   }, 3000);
 }
@@ -78,17 +78,17 @@ function storageUpdate() {
   var redirects = getRedirects();
   var $tbody = $('#redirects table tbody');
   $tbody.html('');
-  $('#redirects').toggle(redirects.length>0);
-  for (var i=0; i<redirects.length; i++) {
+  $('#redirects').toggle(redirects.length > 0);
+  for (var i = 0; i < redirects.length; i++) {
     addToTable(i, redirects[i][0], redirects[i][1]);
   }
 }
 
 function tmpl(id, context) {
-  var tmpl = $('#'+id).html()
+  var tmpl = $('#' + id).html()
   for (var v in context) {
-    var pattern = '{{'+v+'}}';
-    while(tmpl.match(new RegExp(pattern))) {
+    var pattern = '{{' + v + '}}';
+    while (tmpl.match(new RegExp(pattern))) {
       tmpl = tmpl.replace(pattern, context[v]);
     }
   }
@@ -101,17 +101,16 @@ function addToTable(id, from, to) {
     'from': from,
     'to': to
   });
-      
+
   $row.find('button.remove').on('click', remove);
   $row.find('button.edit').on('click', editHolder(
-      $row.find('input.from'),
-      $row.find('input.to'))
-  );
+    $row.find('input.from'),
+    $row.find('input.to')));
   $row.appendTo($('#redirects table tbody'));
 }
 
 
-$(document).ready(function(){
+$(document).ready(function () {
   $('#add').on('click', add);
   $('#alert').alert();
   storageUpdate();

@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "priority": 1,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "regexSubstitution": "vscode://\\1"
+            }
+        },
+        "condition": {
+            "regexFilter": "^https?://vscode/(.*)",
+            "resourceTypes": [
+                "main_frame"
+            ]
+        }
+    }
+]

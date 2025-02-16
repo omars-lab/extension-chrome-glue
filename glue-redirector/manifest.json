@@ -1,0 +1,36 @@
+{
+  "name": "Glue Redirector",
+  "description": "Redirecting Glue Urls",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "info.html",
+    "default_icon": "images/icon-128.png"
+  },
+  "icons": {
+    "16": "images/icon-16.png",
+    "128": "images/icon-128.png"
+  },
+  "options_page": "options.html",
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback"
+  ],
+  "declarative_net_request" : {
+    "rule_resources" : [
+      {
+        "id": "ruleset_vscode",
+        "enabled": true,
+        "path": "rules/vscode.json"
+      }
+    ]
+  },
+  "host_permissions": [
+    "http://vscode/*",
+    "https://vscode/*"
+  ]
+}
