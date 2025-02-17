@@ -3,6 +3,9 @@
   "description": "Redirecting Glue Urls",
   "version": "1.0.0",
   "manifest_version": 3,
+  "omnibox": {
+    "keyword": "glue"
+  },
   "background": {
     "service_worker": "background.js",
     "type": "module"
@@ -17,6 +20,7 @@
   },
   "options_page": "options.html",
   "permissions": [
+    "storage",
     "declarativeNetRequest",
     "declarativeNetRequestFeedback"
   ],
@@ -25,12 +29,16 @@
       {
         "id": "ruleset_vscode",
         "enabled": true,
-        "path": "rules/vscode.json"
+        "path": "rules/x-callback-urls.json"
       }
     ]
   },
   "host_permissions": [
     "http://vscode/*",
-    "https://vscode/*"
+    "https://vscode/*",
+    "http://noteplan/*",
+    "https://noteplan/*",
+    "http://iawriter/*",
+    "https://iawriter/*"
   ]
 }

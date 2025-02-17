@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "priority": 1,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "regexSubstitution": "vscode://\\1"
+            }
+        },
+        "condition": {
+            "regexFilter": "^https?://go/todo",
+            "resourceTypes": [
+                "main_frame"
+            ]
+        }
+    },
+    {
+        "id": 2,
+        "priority": 2,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "regexSubstitution": "noteplan://\\1"
+            }
+        },
+        "condition": {
+            "regexFilter": "^https?://noteplan/(.*)",
+            "resourceTypes": [
+                "main_frame"
+            ]
+        }
+    },
+    {
+        "id": 3,
+        "priority": 3,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "regexSubstitution": "iawriter://\\1"
+            }
+        },
+        "condition": {
+            "regexFilter": "^https?://iawriter/(.*)",
+            "resourceTypes": [
+                "main_frame"
+            ]
+        }
+    }
+]
